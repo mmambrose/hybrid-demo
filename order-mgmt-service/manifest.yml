@@ -1,0 +1,5 @@
+---
+applications:
+- name: order-mgmt-service
+  instances: 1
+  host: hc.order

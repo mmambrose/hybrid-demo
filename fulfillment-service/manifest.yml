@@ -1,0 +1,5 @@
+---
+applications:
+- name: fulfillment-service
+  instances: 1
+  host: hc.fulfill
