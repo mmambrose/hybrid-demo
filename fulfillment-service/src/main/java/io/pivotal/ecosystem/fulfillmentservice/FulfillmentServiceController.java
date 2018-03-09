@@ -8,17 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.beans.factory.annotation.Value;
 
 
-//@RestController
-//public class FulfillmentServiceController {
-//    @RequestMapping("/")
-//    public String index() {
-//        //return "Greetings from Hybrid Cloud Land!";
-//        String template = "index";
-//        //LOG.debug("returning template " + template);
-//        return template;
-//    }
-//}
-
 @Controller
 public class FulfillmentServiceController {
 
