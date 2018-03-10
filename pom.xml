@@ -49,14 +49,15 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>io.pivotal.spring.cloud</groupId>
-            <artifactId>spring-cloud-services-starter-circuit-breaker</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.microsoft.azure</groupId>
-            <artifactId>azure-spring-boot</artifactId>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>io.pivotal.spring.cloud</groupId>-->
+            <!--<artifactId>spring-cloud-services-starter-circuit-breaker</artifactId>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>com.microsoft.azure</groupId>-->
+            <!--<artifactId>azure-servicebus-spring-boot-starter</artifactId>-->
+            <!--<version>0.2.3</version>-->
+        <!--</dependency>-->
 
         <!--WebJars -->
         <dependency>
@@ -88,13 +89,13 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-            <dependency>
-                <groupId>com.microsoft.azure</groupId>
-                <artifactId>azure-spring-boot-bom</artifactId>
-                <version>${azure.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
+            <!--<dependency>-->
+                <!--<groupId>com.microsoft.azure</groupId>-->
+                <!--<artifactId>azure-spring-boot-bom</artifactId>-->
+                <!--<version>${azure.version}</version>-->
+                <!--<type>pom</type>-->
+                <!--<scope>import</scope>-->
+            <!--</dependency>-->
         </dependencies>
     </dependencyManagement>
 

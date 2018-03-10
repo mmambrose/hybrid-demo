@@ -2,4 +2,4 @@
 applications:
 - name: order-mgmt-service
   instances: 1
-  host: hc.order
+  path: ./target/order-mgmt-service-0.0.1-SNAPSHOT.jar
