@@ -1,7 +1,6 @@
 package io.pivotal.ecosystem.ordermgmtservice;
 
 import com.microsoft.azure.servicebus.primitives.ServiceBusException;
-import com.microsoft.azure.spring.autoconfigure.servicebus.ServiceBusAutoConfiguration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

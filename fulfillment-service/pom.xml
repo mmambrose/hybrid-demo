@@ -29,6 +29,11 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>com.microsoft.azure</groupId>
+			<artifactId>azure-servicebus-spring-boot-starter</artifactId>
+			<version>0.2.3</version>
+		</dependency>
 	</dependencies>
 
 	<build>

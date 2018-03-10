@@ -1,5 +1,8 @@
 ---
 applications:
 - name: fulfillment-service
+  memory: 1GB
   instances: 1
-  host: hc.fulfill
+  path: ./target/fulfillment-service-0.0.1-SNAPSHOT.jar
+  services:
+    - azure-servicebus
