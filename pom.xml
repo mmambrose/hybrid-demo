@@ -29,6 +29,7 @@
     <modules>
         <module>fulfillment-service</module>
         <module>order-mgmt-service</module>
+        <module>web-store</module>
     </modules>
 
     <dependencies>
@@ -36,10 +37,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
-        <!--<dependency>-->
-            <!--<groupId>org.springframework.boot</groupId>-->
-            <!--<artifactId>spring-boot-starter-thymeleaf</artifactId>-->
-        <!--</dependency>-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>

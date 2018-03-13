@@ -1,0 +1,6 @@
+---
+applications:
+- name: web-store
+  memory: 1GB
+  instances: 1
+  path: ./target/web-store-0.0.1-SNAPSHOT.jar
