@@ -1,11 +1,11 @@
 package io.pivotal.ecosystem.webstore;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ControllerAdvice;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.ui.Model;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import java.util.Map;
 
 
 /**
@@ -14,14 +14,23 @@ import java.util.Map;
 @Controller
 public class WebStoreController {
 
-    // inject via application.properties
-    @Value("${welcome.message:test}")
-    private String message = "Hello World";
+    private static final Logger LOG = LoggerFactory.getLogger(WebStoreController.class);
 
-    @RequestMapping("/")
-    public String welcome(Map<String, Object> model) {
-        model.put("message", this.message);
-        return "index";
+    @GetMapping("/")
+    public String showForm(Model model)
+    {
+        model.addAttribute("model", new OrderModel());
+        String template = "index";
+        LOG.debug("returning template " + template);
+        return template;
+    }
+
+    @RequestMapping(value="/process", method= RequestMethod.POST)
+    public String processForm(@ModelAttribute("model") OrderModel model)
+    {
+        LOG.info("model = " + model.getShippingAddress());
+        String template = "confirmation";
+        return template;
     }
 
 }
