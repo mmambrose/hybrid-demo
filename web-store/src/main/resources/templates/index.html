@@ -12,7 +12,7 @@
     <div class="jumbotron">
         <h1>Hey there!</h1> <span style="font-size:21px;">Welcome to Teapot Depot</span>
         <p> Please select a product below</p>
-        <form action="#" th:action="@{/process}" th:object="${model}" method="post">
+        <form action="#" th:action="@{/process}" th:object="${order}" method="post">
             <p>
                 <textarea class="input-field" th:field="*{shippingAddress}"></textarea>
             </p>

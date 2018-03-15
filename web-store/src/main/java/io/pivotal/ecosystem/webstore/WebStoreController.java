@@ -19,14 +19,14 @@ public class WebStoreController {
     @GetMapping("/")
     public String showForm(Model model)
     {
-        model.addAttribute("model", new OrderModel());
+        model.addAttribute("order", new OrderModel());
         String template = "index";
         LOG.debug("returning template " + template);
         return template;
     }
 
     @RequestMapping(value="/process", method= RequestMethod.POST)
-    public String processForm(@ModelAttribute("model") OrderModel model)
+    public String submitForm(@ModelAttribute("order") OrderModel model)
     {
         LOG.info("model = " + model.getShippingAddress());
         String template = "confirmation";
