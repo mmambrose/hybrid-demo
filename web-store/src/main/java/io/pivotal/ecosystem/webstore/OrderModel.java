@@ -7,7 +7,7 @@ public class OrderModel {
 
         private Integer productID;
         private Integer quantity;
-        private String shippingAddress;
+        private String destinationZipCode;
 
 
         public Integer getProductID()
@@ -22,8 +22,8 @@ public class OrderModel {
         public Integer getQuantity() { return quantity; }
         public void setQuantity(Integer quantity) { this.quantity = quantity; }
 
-        public String getShippingAddress(){ return shippingAddress; }
-        public void setShippingAddress(String shippingAddress) { this.shippingAddress = shippingAddress; }
+        public String getDestinationZipCode(){ return destinationZipCode; }
+        public void setDestinationZipCode(String destinationZipCode) { this.destinationZipCode = destinationZipCode; }
 
 
 
@@ -31,7 +31,7 @@ public class OrderModel {
         @Override
         public String toString()
         {
-            return "OrderModel [productID=" + productID + ", Quantity=" + quantity + ", Shipping Address=" + shippingAddress + "]";
+            return "OrderModel [productID=" + productID + ", Quantity=" + quantity + ", Shipping Address=" + destinationZipCode + "]";
 
         }
 }
