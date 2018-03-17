@@ -1,5 +1,6 @@
 package io.pivotal.ecosystem.webstore;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
@@ -16,19 +17,34 @@ public class WebStoreController {
 
     private static final Logger LOG = LoggerFactory.getLogger(WebStoreController.class);
 
+    @Autowired
+    private final OrderService orderService;
+
+    public WebStoreController(OrderService orderService) {
+        this.orderService = orderService;
+    }
+
     @GetMapping("/")
     public String showForm(Model model)
     {
         model.addAttribute("order", new OrderModel());
+        model.addAttribute("cost", new OrderCostModel());
         String template = "index";
-        LOG.debug("returning template " + template);
+        LOG.info("returning template " + template);
         return template;
     }
 
     @RequestMapping(value="/process", method= RequestMethod.POST)
-    public String submitForm(@ModelAttribute("order") OrderModel model)
+    public String submitForm(@ModelAttribute("order") OrderModel order, @ModelAttribute("cost") OrderCostModel cost)
     {
-        LOG.info("model = " + model.getShippingAddress());
+        LOG.info("process started...");
+        LOG.info("model = " + order.toString());
+
+        //POST required info about order to OMS
+        //get back info from OMS about the shipping cost from 2 FCs (dummy data today)
+        cost = orderService.sendOrderData(order.getProductID());
+        LOG.info("WebStore received cost model " + cost.toString());
+
         String template = "confirmation";
         return template;
     }

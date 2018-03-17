@@ -11,10 +11,16 @@
 <div class="container">
     <div class="jumbotron">
         <h1>Hey there!</h1> <span style="font-size:21px;">Welcome to Teapot Depot</span>
-        <p> Please select a product below</p>
+        <p> Please make a choice below</p>
         <form action="#" th:action="@{/process}" th:object="${order}" method="post">
             <p>
-                <textarea class="input-field" th:field="*{shippingAddress}"></textarea>
+                Product ID: <textarea class="input-field" th:field="*{productID}"></textarea>
+            </p>
+            <p>
+                Quantity: <textarea class="input-field" th:field="*{quantity}"></textarea>
+            </p>
+            <p>
+                Shipping Address: <textarea class="input-field" th:field="*{shippingAddress}"></textarea>
             </p>
             <p><input type="submit" value="Submit" class="btn btn-lg btn-success"/></p>
         </form>

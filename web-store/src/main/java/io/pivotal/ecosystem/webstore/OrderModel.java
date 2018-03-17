@@ -26,10 +26,12 @@ public class OrderModel {
         public void setShippingAddress(String shippingAddress) { this.shippingAddress = shippingAddress; }
 
 
-//        @Override
-//        public String toString()
-//        {
-//            return "OrderModel [request=" + request + ", response=" + response + ", magnitude=" + magnitude + ", score=" + score + "]";
-//
-//        }
+
+
+        @Override
+        public String toString()
+        {
+            return "OrderModel [productID=" + productID + ", Quantity=" + quantity + ", Shipping Address=" + shippingAddress + "]";
+
+        }
 }
