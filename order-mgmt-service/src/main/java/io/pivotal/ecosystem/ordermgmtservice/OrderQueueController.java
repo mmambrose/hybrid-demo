@@ -11,16 +11,15 @@ import com.microsoft.azure.servicebus.*;
 import javax.servlet.http.HttpServletResponse;
 
 import java.nio.charset.StandardCharsets;
-import java.util.Map;
 
 /**
  * Created by cstewart on 3/9/18.
  */
 @Controller
-public class OrderQueueRestController {
+public class OrderQueueController {
 
     //implement logging
-    private static final Logger LOG = LoggerFactory.getLogger(OrderQueueRestController.class);
+    private static final Logger LOG = LoggerFactory.getLogger(OrderQueueController.class);
 
     // inject via application.properties
     @Value("${welcome.message:test}")
