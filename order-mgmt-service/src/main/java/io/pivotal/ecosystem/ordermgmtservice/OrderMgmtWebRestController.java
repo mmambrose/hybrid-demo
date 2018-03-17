@@ -15,7 +15,7 @@ public class OrderMgmtWebRestController {
 
     @RequestMapping("/receiveOrder")
     public CostModel receiveOrder(@RequestParam(value="productID", required = false, defaultValue="1") Integer productID){
-        CostModel result = new CostModel(productID, productID);
+        CostModel result = new CostModel(10.50, 10.70);
         LOG.info("Cost Model = " + result.toString());
         return result;
     }

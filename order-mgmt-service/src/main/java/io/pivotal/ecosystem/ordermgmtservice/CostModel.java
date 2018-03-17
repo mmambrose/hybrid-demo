@@ -5,27 +5,27 @@ package io.pivotal.ecosystem.ordermgmtservice;
  */
 public class CostModel {
 
-    private Integer costFC1;
-    private Integer costFC2;
+    private Double costFC1;
+    private Double costFC2;
 
-    public CostModel(Integer costFC1, Integer costFC2){
+    public CostModel(Double costFC1, Double costFC2){
         this.costFC1 = costFC1;
         this.costFC2 = costFC2;
     }
 
-    public void setCostFC1(Integer costFC1){
+    public void setCostFC1(Double costFC1){
         this.costFC1 = costFC1;
     }
 
-    public Integer getCostFC1(){
+    public Double getCostFC1(){
         return costFC1;
     }
 
-    public void setCostFC2(Integer costFC2) {
+    public void setCostFC2(Double costFC2) {
         this.costFC2 = costFC2;
     }
 
-    public Integer getCostFC2() {
+    public Double getCostFC2() {
         return costFC2;
     }
 
