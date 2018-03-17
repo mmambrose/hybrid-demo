@@ -1,26 +1,20 @@
 package io.pivotal.ecosystem.fulfillmentservice;
 
-import java.util.Map;
-
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.microsoft.azure.servicebus.*;
 import com.microsoft.azure.servicebus.primitives.ServiceBusException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+
 import javax.servlet.http.HttpServletResponse;
-import com.microsoft.azure.servicebus.MessageHandlerOptions;
-import com.microsoft.azure.servicebus.SubscriptionClient;
-import java.util.concurrent.TimeUnit;
-
-import com.microsoft.azure.servicebus.IMessage;
-import com.microsoft.azure.servicebus.IMessageHandler;
-import com.microsoft.azure.servicebus.ExceptionPhase;
-
+import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.TimeUnit;
 
+import static org.springframework.util.SerializationUtils.deserialize;
 
 
 @Controller
@@ -60,8 +54,20 @@ public class FulfillmentServiceController {
 
     static class MessageHandler implements IMessageHandler {
         public CompletableFuture<Void> onMessageAsync(IMessage message) {
+
+            ObjectMapper mapper = new ObjectMapper();
+            FulfillmentOrderModel order = new FulfillmentOrderModel();
             final String messageString = new String(message.getBody(), StandardCharsets.UTF_8);
-            LOG.info("Received message: " + messageString);
+            LOG.info("Message in String is: " + messageString);
+
+            try {
+               order = mapper.readValue(messageString, FulfillmentOrderModel.class);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            LOG.info("Message converted to order is: " + order.toString());
+            LOG.info("Message received with ID = " + message.getMessageId());
             return CompletableFuture.completedFuture(null);
         }
 
