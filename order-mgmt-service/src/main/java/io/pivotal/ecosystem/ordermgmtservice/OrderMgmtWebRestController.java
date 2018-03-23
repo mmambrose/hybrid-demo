@@ -33,7 +33,12 @@ public class OrderMgmtWebRestController {
         LOG.info("OMS received order " + order.toString());
 
         orderRepository.save(order);
-
+        LOG.info("Customers found with findAll():");
+        LOG.info("-------------------------------");
+        for (OrderModel orderLog : orderRepository.findAll()) {
+            LOG.info(orderLog.toString());
+        }
+        LOG.info("");
         LOG.info("Order saved to repository");
 
         //call OrderQueue Service to process request to queue

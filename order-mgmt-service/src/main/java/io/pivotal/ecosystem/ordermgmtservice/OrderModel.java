@@ -32,16 +32,14 @@ public class OrderModel implements Serializable {
 //    private String Status;
 
     public OrderModel(){
-
     }
 
-//    public OrderModel(Integer productID, Integer quantity, String destinationZipCode){
-//        this.productID = productID;
-//        this.quantity = quantity;
-//        this.destinationZipCode = destinationZipCode;
-//        this.Status = "SUBMITTED";
-//    }
-
+    public OrderModel(Integer productID, Integer quantity, String destinationZipCode){
+        this.productID = productID;
+        this.quantity = quantity;
+        this.destinationZipCode = destinationZipCode;
+       // this.Status = "SUBMITTED";
+    }
 
     public Integer getOrderID(){
         return orderID;
