@@ -35,15 +35,15 @@ public class WebStoreController {
     }
 
     @RequestMapping(value="/process", method= RequestMethod.POST)
-    public String submitForm(@ModelAttribute("order") OrderModel order, @ModelAttribute("cost") OrderCostModel cost)
+    public String submitForm(@ModelAttribute("order") OrderModel order)
     {
         LOG.info("process started...");
         LOG.info("model = " + order.toString());
 
         //POST required info about order to OMS
         //get back info from OMS about the shipping cost from 2 FCs (dummy data today)
-        cost = orderService.sendOrderData(order);
-        LOG.info("WebStore received cost model " + cost.toString());
+        //cost = orderService.sendOrderData(order);
+        //LOG.info("WebStore received cost model " + cost.toString());
 
         String template = "confirmation";
         return template;

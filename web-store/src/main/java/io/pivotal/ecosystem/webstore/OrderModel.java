@@ -1,14 +1,22 @@
 package io.pivotal.ecosystem.webstore;
 
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+
 /**
  * Created by cstewart on 3/13/18.
  */
 public class OrderModel {
 
+
+
         private Integer productID;
         private Integer quantity;
+
         private String destinationZipCode;
 
+        public OrderModel() {
+
+        }
 
         public Integer getProductID()
         {
@@ -24,8 +32,6 @@ public class OrderModel {
 
         public String getDestinationZipCode(){ return destinationZipCode; }
         public void setDestinationZipCode(String destinationZipCode) { this.destinationZipCode = destinationZipCode; }
-
-
 
 
         @Override
