@@ -21,21 +21,29 @@ public class OrderMgmtWebRestController {
     @Autowired
     private final OrderQueueService queueService;
 
+    @Autowired
+    OrderRepository orderRepository;
+
     public OrderMgmtWebRestController(OrderQueueService queueService) {
         this.queueService = queueService;
     }
 
     @RequestMapping(value = "/receiveOrder", method = POST)
-    public CostModel receiveOrder(@RequestBody OrderModel order) throws ServiceBusException, InterruptedException {
+    public String receiveOrder(@RequestBody OrderModel order) throws ServiceBusException, InterruptedException {
         LOG.info("OMS received order " + order.toString());
+
+        orderRepository.save(order);
+
+        LOG.info("Order saved to repository");
 
         //call OrderQueue Service to process request to queue
         String result = queueService.process(order);
 
-        //dummy data response
-        CostModel costData = new CostModel(10.50, 10.70);
+        result = "200 OK";
 
-        LOG.info("Cost Model = " + costData.toString());
-        return costData;
+        //dummy data response
+        //CostModel costData = new CostModel(10.50, 10.70);
+        //LOG.info("Cost Model = " + costData.toString());
+        return result;
     }
 }

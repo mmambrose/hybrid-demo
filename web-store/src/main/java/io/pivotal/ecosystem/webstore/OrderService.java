@@ -21,7 +21,7 @@ public class OrderService {
     private String url;
 
 
-    public OrderCostModel sendOrderData(OrderModel order) {
+    public String sendOrderData(OrderModel order) {
         RestTemplate restTemplate = new RestTemplate();
 
         LOG.info("Starting send order Data process, URL is = " + url);
@@ -31,10 +31,10 @@ public class OrderService {
         LOG.info("Request body created " + request.toString());
 
         //Send POST request to Order MGMT and get cost model back
-        OrderCostModel cost = restTemplate.postForObject(url, request, OrderCostModel.class);
+        String result = restTemplate.postForObject(url, request, String.class);
 
-        LOG.info("OrderService received cost Model" + cost.toString());
-        return cost;
+        LOG.info("OrderService received response" + result.toString());
+        return result;
     }
 
 }

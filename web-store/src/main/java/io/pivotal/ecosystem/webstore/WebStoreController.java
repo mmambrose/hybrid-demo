@@ -42,7 +42,7 @@ public class WebStoreController {
 
         //POST required info about order to OMS
         //get back info from OMS about the shipping cost from 2 FCs (dummy data today)
-        //cost = orderService.sendOrderData(order);
+        String result = orderService.sendOrderData(order);
         //LOG.info("WebStore received cost model " + cost.toString());
 
         String template = "confirmation";
