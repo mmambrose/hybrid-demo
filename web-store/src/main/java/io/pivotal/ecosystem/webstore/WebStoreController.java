@@ -28,7 +28,7 @@ public class WebStoreController {
     public String showForm(Model model)
     {
         model.addAttribute("order", new OrderModel());
-        model.addAttribute("cost", new OrderCostModel());
+        model.addAttribute("cost", new OrderResult());
         String template = "index";
         LOG.info("returning template " + template);
         return template;
@@ -42,8 +42,8 @@ public class WebStoreController {
 
         //POST required info about order to OMS
         //get back info from OMS about the shipping cost from 2 FCs (dummy data today)
-        String result = orderService.sendOrderData(order);
-        //LOG.info("WebStore received cost model " + cost.toString());
+        OrderResult orderResult = orderService.sendOrderData(order);
+        LOG.info("WebStore received response from OMS " + orderResult.toString());
 
         String template = "confirmation";
         return template;

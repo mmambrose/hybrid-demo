@@ -27,18 +27,21 @@ public class OrderModel implements Serializable {
     @Column
     private String destinationZipCode;
 
+    @Column String orderStatus;
+
 //    @Column
 //    @JsonIgnore
 //    private String Status;
 
     public OrderModel(){
+        this.orderStatus = "PROCESSING";
     }
 
     public OrderModel(Integer productID, Integer quantity, String destinationZipCode){
         this.productID = productID;
         this.quantity = quantity;
         this.destinationZipCode = destinationZipCode;
-       // this.Status = "SUBMITTED";
+        //this.orderStatus = "";
     }
 
     public Integer getOrderID(){
@@ -66,7 +69,7 @@ public class OrderModel implements Serializable {
     @Override
     public String toString()
     {
-        return "OrderModel [orderID=" + orderID + ", productID=" + productID + ", Quantity=" + quantity + ", Shipping Address=" + destinationZipCode + "]";
+        return "OrderModel [orderID=" + orderID + ", productID=" + productID + ", Quantity=" + quantity + ", Shipping Address=" + destinationZipCode + ", Order Status=" + orderStatus + "]";
 
     }
 }

@@ -29,26 +29,34 @@ public class OrderMgmtWebRestController {
     }
 
     @RequestMapping(value = "/receiveOrder", method = POST)
-    public String receiveOrder(@RequestBody OrderModel order) throws ServiceBusException, InterruptedException {
+    public OrderResult receiveOrder(@RequestBody OrderModel order) throws ServiceBusException, InterruptedException {
         LOG.info("OMS received order " + order.toString());
+        OrderResult orderResult = new OrderResult();
 
-        orderRepository.save(order);
-        LOG.info("Customers found with findAll():");
-        LOG.info("-------------------------------");
-        for (OrderModel orderLog : orderRepository.findAll()) {
-            LOG.info(orderLog.toString());
+        try {
+            order = orderRepository.save(order);
+            LOG.info("OMS saved order to DB " + order.toString());
+            String result = queueService.process(order);
+            LOG.info("OMS sent order to topic");
+
+            LOG.info("Customers found with findAll(): in DB");
+            LOG.info("-------------------------------");
+            for (OrderModel orderLog : orderRepository.findAll()) {
+                LOG.info(orderLog.toString());
+            }
+            LOG.info("");
+
+            //Return status OK and orderID;
+            orderResult.setStatusCode("200 OK");
+            orderResult.setOrderID(order.getOrderID());
+
         }
-        LOG.info("");
-        LOG.info("Order saved to repository");
+        catch (Exception e){
+            orderResult.setStatusCode(e.toString());
+            orderResult.setOrderID(null);
+        }
 
-        //call OrderQueue Service to process request to queue
-        String result = queueService.process(order);
-
-        result = "200 OK";
-
-        //dummy data response
-        //CostModel costData = new CostModel(10.50, 10.70);
-        //LOG.info("Cost Model = " + costData.toString());
-        return result;
+        LOG.info("OMS returning order result " + orderResult.toString());
+        return orderResult;
     }
 }
