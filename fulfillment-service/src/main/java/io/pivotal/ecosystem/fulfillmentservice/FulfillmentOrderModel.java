@@ -1,16 +1,19 @@
 package io.pivotal.ecosystem.fulfillmentservice;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.io.Serializable;
 
 /**
  * Created by mambrose on 3/17/18.
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class FulfillmentOrderModel implements Serializable {
 
+   // private Integer orderID;
     private Integer productID;
     private Integer quantity;
     private String destinationZipCode;
-
 
     public Integer getProductID() {
         return productID;

@@ -25,32 +25,32 @@ public class FulfillmentServiceController {
 
     // inject via application.properties
     // need to figure out how to create this on demand or if we should?
-    @Autowired
-    private SubscriptionClient subscriptionClient;
+//    @Autowired
+//    private SubscriptionClient subscriptionClient;
 
 
-    @RequestMapping("/subscribe")
-    public String process(HttpServletResponse response) throws ServiceBusException, InterruptedException {
+//    @RequestMapping("/subscribe")
+//    public String process(HttpServletResponse response) throws ServiceBusException, InterruptedException {
+//
+//        LOG.info("Process beginning...");
+//        StringBuffer result = new StringBuffer();
+//
+//        try{
+//            LOG.info("About to receive message...");
+//            receiveSubscriptionMessage();
+//        }catch (ServiceBusException e) {
+//
+//        }
+//
+//        return result.toString();
+//    }
 
-        LOG.info("Process beginning...");
-        StringBuffer result = new StringBuffer();
-
-        try{
-            LOG.info("About to receive message...");
-            receiveSubscriptionMessage();
-        }catch (ServiceBusException e) {
-
-        }
-
-        return result.toString();
-    }
-
-    private void receiveSubscriptionMessage() throws ServiceBusException, InterruptedException {
-
-        LOG.info("About to receive message...");
-        subscriptionClient.registerMessageHandler(new MessageHandler(), new MessageHandlerOptions());
-
-    }
+//    private void receiveSubscriptionMessage() throws ServiceBusException, InterruptedException {
+//
+//        LOG.info("About to receive message...");
+//        subscriptionClient.registerMessageHandler(new MessageHandler(), new MessageHandlerOptions());
+//
+//    }
 
     static class MessageHandler implements IMessageHandler {
         public CompletableFuture<Void> onMessageAsync(IMessage message) {

@@ -49,21 +49,18 @@ public class OrderQueueService {
     }
 
     private void sendTopicMessage(OrderModel order) throws ServiceBusException, InterruptedException, JsonProcessingException {
-//        final String messageBody = "topic message";
-//        LOG.info("Sending message: " + messageBody);
-//        final Message message = new Message(messageBody.getBytes(StandardCharsets.UTF_8));
 
-        //serialize order object into message for Azure Service Bus
+        //serialize order object into String for Azure Service Bus serialization
         ObjectMapper mapper = new ObjectMapper();
         String orderInString = mapper.writeValueAsString(order);
 
-      //  byte[] messageBody = serialize(orderInString);
+      //  Serialize message into bytes
         final Message message = new Message(orderInString.getBytes(StandardCharsets.UTF_8));
-        message.setLabel("order");
+        message.setLabel("new order");
         message.setContentType("application/json");
         LOG.info("Message sent with ID = " + message.getMessageId());
         topicClient.send(message);
-        LOG.info("Message sent...");
+        LOG.info("Message sent...Client=" + topicClient.toString() + " Message=" + orderInString);
         // topicClient.close();
         // LOG.info("topic connection closed");
     }
