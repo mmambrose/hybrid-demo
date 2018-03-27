@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>CF Summit App</title>
+    <title>Order Status</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
     <link rel="stylesheet" type="text/css"
@@ -10,13 +10,10 @@
 <body>
 <div class="container">
     <div class="jumbotron">
-        <h1>Hey there!</h1> <span style="font-size:21px;">Welcome to Teapot Depot</span>
+        <h1>Order Status</h1> <span style="font-size:21px;" th:text="'Order #' + ${order.orderID}"></span>
         <p>Thank you for your order! Your order has been submitted!</p>
         <p th:text="'Your order ID is:' + ${order.orderID}" ></p>
-        <p>
-            You can track the status of your order <a th:href="@{'/order/' + ${order.orderID} + '/status'}">here</a>
-        </p>
-        <a href="/">Submit another order</a>
+        <!--<p th:text="'Order Status:' + ${order.statusCode}" ></p>-->
     </div>
 </div>
 </body>
