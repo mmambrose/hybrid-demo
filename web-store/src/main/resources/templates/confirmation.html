@@ -11,12 +11,8 @@
 <div class="container">
     <div class="jumbotron">
         <h1>Hey there!</h1> <span style="font-size:21px;">Welcome to Teapot Depot</span>
-        <p>
-            Thank you for your order! Your order has been submitted!
-            <br/>
-            Your order will ship to:
-        </p>
-        <p th:text="'Address: ' + ${order.destinationZipCode}" />
+        <p>Thank you for your order! Your order has been submitted!</p>
+        <p th:text="'Your order ID is:' + ${order.orderID}" ></p>
         <br/>
         <a href="/">Submit another order</a>
     </div>

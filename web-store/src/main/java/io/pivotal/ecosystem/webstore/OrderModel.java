@@ -14,6 +14,8 @@ public class OrderModel {
 
         private String destinationZipCode;
 
+        private Integer orderID;
+
         public OrderModel() {
 
         }
@@ -33,6 +35,8 @@ public class OrderModel {
         public String getDestinationZipCode(){ return destinationZipCode; }
         public void setDestinationZipCode(String destinationZipCode) { this.destinationZipCode = destinationZipCode; }
 
+        public Integer getOrderID() { return orderID; }
+        public void setOrderID(Integer orderID) { this.orderID = orderID; }
 
         @Override
         public String toString()
