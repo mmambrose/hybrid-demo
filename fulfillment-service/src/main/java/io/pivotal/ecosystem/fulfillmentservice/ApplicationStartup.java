@@ -24,7 +24,7 @@ public class ApplicationStartup implements ApplicationListener<ApplicationReadyE
     private String location;
 
     //implement logging
-    private static	final Logger LOG = LoggerFactory.getLogger(FulfillmentServiceController.class);
+    private static final Logger LOG = LoggerFactory.getLogger(FulfillmentServiceController.class);
 
     @Override
     public void onApplicationEvent(final ApplicationReadyEvent event){
