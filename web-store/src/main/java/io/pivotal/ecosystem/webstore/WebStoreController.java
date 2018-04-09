@@ -30,7 +30,6 @@ public class WebStoreController {
     public String showForm(Model model)
     {
         model.addAttribute("order", new OrderModel());
-        //model.addAttribute("cost", new OrderResult());
         String template = "index";
         LOG.info("returning template " + template);
         return template;

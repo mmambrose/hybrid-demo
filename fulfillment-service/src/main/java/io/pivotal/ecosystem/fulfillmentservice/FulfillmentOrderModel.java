@@ -10,10 +10,20 @@ import java.io.Serializable;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class FulfillmentOrderModel implements Serializable {
 
-   // private Integer orderID;
+
+    private Integer orderID;
     private Integer productID;
     private Integer quantity;
     private String destinationZipCode;
+
+
+    public Integer getOrderID() {
+        return orderID;
+    }
+
+    public void setOrderID(Integer orderID) {
+        this.orderID = orderID;
+    }
 
     public Integer getProductID() {
         return productID;
