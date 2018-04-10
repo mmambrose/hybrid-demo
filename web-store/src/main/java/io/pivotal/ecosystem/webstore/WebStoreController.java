@@ -70,13 +70,9 @@ public class WebStoreController {
         //receive info back from OMS about specified order
         LOG.info("Order info for OrderID "+orderID+" received from OMS: " + orderResult.toString());
 
-        //set orderID on OrderModel so that view can access it
+        //set orderID and status on OrderModel so that view can access it
         order.setOrderID((orderResult.orderID));
-
-        //TODO
-        //we would need to add Order Status to Order Model in Web Store..
-        // ..in order to make it accessible to the view?
-        //order.setStatusCode(orderResult.statusCode);
+        order.setOrderStatus(orderResult.orderStatus);
 
         //return template
         String template = "status";

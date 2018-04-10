@@ -11,10 +11,9 @@ public class OrderModel {
 
         private Integer productID;
         private Integer quantity;
-
         private String destinationZipCode;
-
         private Integer orderID;
+        private String orderStatus;
 
         public OrderModel() {
 
@@ -37,6 +36,9 @@ public class OrderModel {
 
         public Integer getOrderID() { return orderID; }
         public void setOrderID(Integer orderID) { this.orderID = orderID; }
+
+        public String getOrderStatus() { return orderStatus; }
+        public void setOrderStatus(String orderStatus) { this.orderStatus = orderStatus; }
 
         @Override
         public String toString()

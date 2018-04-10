@@ -4,7 +4,6 @@ import com.microsoft.azure.servicebus.primitives.ServiceBusException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
@@ -47,12 +46,12 @@ public class OrderMgmtWebRestController {
             LOG.info("");
 
             //Return status OK and orderID;
-            orderResult.setStatusCode("200 OK");
+            orderResult.setOrderStatus("200 OK");
             orderResult.setOrderID(order.getOrderID());
 
         }
         catch (Exception e){
-            orderResult.setStatusCode(e.toString());
+            orderResult.setOrderStatus(e.toString());
             orderResult.setOrderID(null);
         }
 
@@ -69,7 +68,7 @@ public class OrderMgmtWebRestController {
 
         OrderResult orderResult = new OrderResult();
         orderResult.setOrderID(order.getOrderID());
-        orderResult.setStatusCode(order.orderStatus);
+        orderResult.setOrderStatus(order.orderStatus);
 
         LOG.info("OMS returning order info for order "+orderID+": " + orderResult);
         return orderResult;

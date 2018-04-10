@@ -1,6 +1,5 @@
 package io.pivotal.ecosystem.webstore;
 
-import java.math.BigDecimal;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
@@ -10,23 +9,20 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class OrderResult {
 
     Integer orderID;
+    String orderStatus;
 
-    String statusCode;
 
-
-    public String getStatusCode() {
-        return statusCode;
+    public String getOrderStatus() {
+        return orderStatus;
     }
-
-    public void setStatusCode(String statusCode) {
-        this.statusCode = statusCode;
+    public void setOrderStatus(String orderStatus) {
+        this.orderStatus = orderStatus;
     }
 
 
     public Integer getOrderID() {
         return orderID;
     }
-
     public void setOrderID(Integer orderID) {
         this.orderID = orderID;
     }
@@ -34,7 +30,7 @@ public class OrderResult {
     @Override
     public String toString()
     {
-        return "OrderResult [orderID=" + orderID + ", Status Code=" + statusCode + "]";
+        return "OrderResult [orderID=" + orderID + ", Status Code=" + orderStatus + "]";
 
     }
 }
