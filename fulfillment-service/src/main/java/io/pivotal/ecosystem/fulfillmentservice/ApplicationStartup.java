@@ -6,6 +6,7 @@ import com.microsoft.azure.servicebus.primitives.ServiceBusException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
@@ -19,8 +20,11 @@ public class ApplicationStartup implements ApplicationListener<ApplicationReadyE
     @Autowired
     private SubscriptionClient subscriptionClient;
 
+    @Value("${location}")
+    private String location;
+
     //implement logging
-    private static	final Logger LOG = LoggerFactory.getLogger(FulfillmentServiceController.class);
+    private static final Logger LOG = LoggerFactory.getLogger(FulfillmentServiceController.class);
 
     @Override
     public void onApplicationEvent(final ApplicationReadyEvent event){

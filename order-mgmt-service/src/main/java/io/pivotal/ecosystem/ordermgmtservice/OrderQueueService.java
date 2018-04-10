@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.microsoft.azure.servicebus.*;
 
 import java.nio.charset.StandardCharsets;
+import java.util.concurrent.CompletableFuture;
 
 import static org.springframework.util.SerializationUtils.serialize;
 
@@ -63,6 +64,24 @@ public class OrderQueueService {
         LOG.info("Message sent...Client=" + topicClient.toString() + " Message=" + orderInString);
         // topicClient.close();
         // LOG.info("topic connection closed");
+    }
+
+    //Handles message received from subscription
+    static class MessageHandler implements IMessageHandler {
+
+        MessageHandler() throws ServiceBusException, InterruptedException {
+        }
+
+        public CompletableFuture<Void> onMessageAsync(IMessage message) {
+
+            LOG.info("Message received with ID = " + message.getMessageId());
+            return CompletableFuture.completedFuture(null);
+        }
+
+        @Override
+        public void notifyException(Throwable exception, ExceptionPhase phase) {
+            LOG.info(phase + " encountered exception:" + exception.getMessage());
+        }
     }
 
 
