@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.microsoft.azure.servicebus.*;
 
+import javax.annotation.PostConstruct;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.concurrent.CompletableFuture;
@@ -23,8 +24,15 @@ import static org.springframework.util.SerializationUtils.serialize;
 @Service
 public class OrderQueueService {
 
+    private static OrderRepository orderRepository;
+
     @Autowired
-    OrderRepository orderRepository;
+    OrderRepository orderRepository0;
+
+    @PostConstruct
+    private void initOrderRepository(){
+        orderRepository = orderRepository0;
+    }
 
     //implement logging
     private static final Logger LOG = LoggerFactory.getLogger(OrderQueueService.class);
@@ -93,6 +101,15 @@ public class OrderQueueService {
             if (resultFromFC.getFulfilled() == true){
                 LOG.info("FC returned true for order" + resultFromFC.getOrderID());
                 LOG.info("FC result for this order is " + resultFromFC.getFulfilled());
+                OrderModel updated = orderRepository.findOne(resultFromFC.getOrderID());
+                updated.setStatus("CONFIRMED");
+                orderRepository.save(updated);
+                LOG.info("Orders found with findAll(): in DB");
+                LOG.info("-------------------------------");
+                for (OrderModel orderLog : orderRepository.findAll()) {
+                    LOG.info(orderLog.toString());
+                }
+                LOG.info("");
             }
             else {
                 LOG.info("FC returned false for order" + resultFromFC.getOrderID());

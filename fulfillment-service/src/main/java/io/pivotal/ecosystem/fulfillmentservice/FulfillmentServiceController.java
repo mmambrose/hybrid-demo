@@ -84,7 +84,12 @@ public class FulfillmentServiceController  {
         }
 
         private void sendTopicMessage(TopicClient topicClient, FulfillmentResult result) throws JsonProcessingException, ServiceBusException, InterruptedException {
-
+            try {
+                Thread.sleep(25000);
+                LOG.info("sleeping");
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             //create Message
             ObjectMapper mapper = new ObjectMapper();
             String resultInString = mapper.writeValueAsString(result);
