@@ -1,5 +1,6 @@
 package io.pivotal.ecosystem.fulfillmentservice;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.microsoft.azure.servicebus.*;
 import com.microsoft.azure.servicebus.primitives.ConnectionStringBuilder;
@@ -8,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.web.filter.OrderedRequestContextFilter;
 import org.springframework.stereotype.Controller;
 
 import java.io.IOException;
@@ -17,6 +19,14 @@ import java.util.concurrent.CompletableFuture;
 
 @Controller
 public class FulfillmentServiceController  {
+
+    public static String location;
+
+    @Value("${location}")
+    public void setLocation(String loc) {
+        location = loc;
+    }
+
 
     //implement logging
     private static final Logger LOG = LoggerFactory.getLogger(FulfillmentServiceController.class);
@@ -49,41 +59,67 @@ public class FulfillmentServiceController  {
             }
             LOG.info("Message converted to order is: " + order.toString());
 
-            //do something with order
-            Integer cost = determineCost(order);
+            FulfillmentResult result = new FulfillmentResult(order.getOrderID());
 
-            //create Message
-            String returnString = "return";
-            Message returnMessage = new Message(returnString.getBytes(StandardCharsets.UTF_8));
 
-            //write a new message to the queue
+            //Create result of order (order ID and isFulfilled)
+            result = determineCost(order, result);
+
+            //sendMessage
             try {
                 topicClient = new TopicClient(new ConnectionStringBuilder("Endpoint=sb://u223b2da3d21.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=fohJEnsreG6zJC8pqM6NtS9nC79WjfS+bEl6TPetz1Y=",
                         "topic2"));
-                topicClient.send(returnMessage);
-                LOG.info("sent return message" + returnMessage.getBody());
+                sendTopicMessage(topicClient, result);
+                LOG.info("sent return message" + result.toString());
 
             } catch (InterruptedException e) {
                 e.printStackTrace();
             } catch (ServiceBusException e) {
                 e.printStackTrace();
+            } catch (JsonProcessingException e) {
+                e.printStackTrace();
             }
-
-
 
             return CompletableFuture.completedFuture(null);
         }
 
-        private Integer determineCost(FulfillmentOrderModel order) {
+        private void sendTopicMessage(TopicClient topicClient, FulfillmentResult result) throws JsonProcessingException, ServiceBusException, InterruptedException {
+
+            //create Message
+            ObjectMapper mapper = new ObjectMapper();
+            String resultInString = mapper.writeValueAsString(result);
+            final Message message = new Message(resultInString.getBytes(StandardCharsets.UTF_8));
+            message.setLabel("fulfillment result");
+            message.setContentType("application/json");
+            LOG.info("Message sent with ID = " + message.getMessageId());
+
+            //send message
+            topicClient.send(message);
+            LOG.info("Message sent...Client=" + topicClient.toString() + " Message=" + resultInString);
+
+
+        }
+
+        private FulfillmentResult determineCost(FulfillmentOrderModel order, FulfillmentResult result) {
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            if (order.getDestinationZipCode() == "78751")
-                return 1;
-            else
-                return 2;
+            if (order.getDestinationZipCode().equals(location)) {
+                LOG.info("Determining Cost... Location of this FC is " + location);
+                LOG.info("Destination of this order is " + order.getDestinationZipCode());
+                result.setFulfilled(true);
+                LOG.info("Fulfilled is true");
+                return result;
+            }
+            else {
+                LOG.info("Determining Cost... Location of this FC is " + location);
+                LOG.info("Destination of this order is " + order.getDestinationZipCode());
+                result.setFulfilled(false);
+                LOG.info("Fulfilled is false");
+                return result;
+            }
         }
 
         public void notifyException(Throwable exception, ExceptionPhase phase) {

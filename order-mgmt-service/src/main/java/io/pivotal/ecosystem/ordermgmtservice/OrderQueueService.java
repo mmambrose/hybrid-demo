@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.microsoft.azure.servicebus.*;
 
+import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.concurrent.CompletableFuture;
 
@@ -21,6 +22,9 @@ import static org.springframework.util.SerializationUtils.serialize;
  */
 @Service
 public class OrderQueueService {
+
+    @Autowired
+    OrderRepository orderRepository;
 
     //implement logging
     private static final Logger LOG = LoggerFactory.getLogger(OrderQueueService.class);
@@ -75,6 +79,26 @@ public class OrderQueueService {
         public CompletableFuture<Void> onMessageAsync(IMessage message) {
 
             LOG.info("Message received with ID = " + message.getMessageId());
+
+            ObjectMapper mapper = new ObjectMapper();
+            FulfillmentResult resultFromFC = new FulfillmentResult();
+            final String messageString = new String(message.getBody(), StandardCharsets.UTF_8);
+            try {
+                resultFromFC = mapper.readValue(messageString, FulfillmentResult.class);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            LOG.info("Message converted to Fulfillment Result is: " + resultFromFC.toString());
+
+            if (resultFromFC.getFulfilled() == true){
+                LOG.info("FC returned true for order" + resultFromFC.getOrderID());
+                LOG.info("FC result for this order is " + resultFromFC.getFulfilled());
+            }
+            else {
+                LOG.info("FC returned false for order" + resultFromFC.getOrderID());
+                LOG.info("FC result for this order is " + resultFromFC.getFulfilled());
+            }
+
             return CompletableFuture.completedFuture(null);
         }
 
