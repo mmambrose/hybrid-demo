@@ -39,6 +39,8 @@ public class FulfillmentServiceController  {
     static class MessageHandler implements IMessageHandler {
 
 
+        private String correctFC = "none";
+
         MessageHandler() throws ServiceBusException, InterruptedException {
         }
 
@@ -111,9 +113,53 @@ public class FulfillmentServiceController  {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            if (order.getDestinationZipCode().equals(location)) {
+
+            switch (order.getDestinationZipCode()) {
+                case "TX": {
+                    correctFC = "south";
+                    LOG.info("in switch statement for " + order.getDestinationZipCode() + " correctFC=" + correctFC);
+                    break;
+                }
+                case "LA": {
+                    correctFC = "south";
+                    LOG.info("in switch statement for " + order.getDestinationZipCode() + " correctFC=" + correctFC);
+                    break;
+                }
+                case "CO": {
+                    correctFC = "south";
+                    LOG.info("in switch statement for " + order.getDestinationZipCode() + " correctFC=" + correctFC);
+                    break;
+                }
+                case "OK": {
+                    correctFC = "south";
+                    LOG.info("in switch statement for " + order.getDestinationZipCode() + " correctFC=" + correctFC);
+                    break;
+                }
+                case "NY": {
+                    correctFC = "north";
+                    LOG.info("in switch statement for " + order.getDestinationZipCode() + " correctFC=" + correctFC);
+
+                }
+                case "NJ":{
+                    correctFC = "north";
+                    LOG.info("in switch statement for " + order.getDestinationZipCode() + " correctFC=" + correctFC);
+                    break;
+                }
+                case "MA": {
+                    correctFC = "north";
+                    LOG.info("in switch statement for " + order.getDestinationZipCode() + " correctFC=" + correctFC);
+
+                }
+                case "NH": {
+                    correctFC = "north";
+                    LOG.info("in switch statement for " + order.getDestinationZipCode() + " correctFC=" + correctFC);
+                    break;
+                }
+            }
+
+            if (correctFC.equals(location)) {
                 LOG.info("Determining Cost... Location of this FC is " + location);
-                LOG.info("Destination of this order is " + order.getDestinationZipCode());
+                LOG.info("Destination of this order is " + correctFC);
                 result.setFulfilled(true);
                 result.setFC(location);
                 LOG.info("Fulfilled is true");
@@ -121,7 +167,7 @@ public class FulfillmentServiceController  {
             }
             else {
                 LOG.info("Determining Cost... Location of this FC is " + location);
-                LOG.info("Destination of this order is " + order.getDestinationZipCode());
+                LOG.info("Destination of this order is " + correctFC);
                 result.setFulfilled(false);
                 result.setFC(location);
                 LOG.info("Fulfilled is false");
