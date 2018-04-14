@@ -85,7 +85,7 @@ public class FulfillmentServiceController  {
 
         private void sendTopicMessage(TopicClient topicClient, FulfillmentResult result) throws JsonProcessingException, ServiceBusException, InterruptedException {
             try {
-                Thread.sleep(10000);
+                Thread.sleep(5000);
                 LOG.info("sleeping");
             } catch (InterruptedException e) {
                 e.printStackTrace();
