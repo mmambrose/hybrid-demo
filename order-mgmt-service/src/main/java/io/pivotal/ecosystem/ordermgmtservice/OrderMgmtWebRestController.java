@@ -68,6 +68,7 @@ public class OrderMgmtWebRestController {
 
         OrderResult orderResult = new OrderResult();
         orderResult.setOrderID(order.getOrderID());
+        orderResult.setFulfilledBy(order.fulfilledBy);
         orderResult.setOrderStatus(order.orderStatus);
 
         LOG.info("OMS returning order info for order "+orderID+": " + orderResult);

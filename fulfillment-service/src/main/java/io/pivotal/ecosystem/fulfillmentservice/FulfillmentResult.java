@@ -6,6 +6,7 @@ package io.pivotal.ecosystem.fulfillmentservice;
 public class FulfillmentResult {
 
     private Integer orderID;
+    private String FC;
     private Boolean isFulfilled;
 
     public Integer getOrderID() {
@@ -28,9 +29,13 @@ public class FulfillmentResult {
         this.orderID=orderID;
     }
 
+    public String getFC() { return FC;}
+
+    public void setFC(String FC) { this.FC = FC;}
+
     @Override
     public String toString() {
-        return "FulfillmentOrderModel [orderID=" + orderID + ", isFulfilled=" + isFulfilled + "]";
+        return "FulfillmentOrderModel [orderID=" + orderID + ", FC=" + FC + ", isFulfilled=" + isFulfilled + "]";
 
     }
 

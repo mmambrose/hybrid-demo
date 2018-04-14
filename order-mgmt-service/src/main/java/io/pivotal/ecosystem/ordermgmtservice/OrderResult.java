@@ -7,6 +7,7 @@ public class OrderResult {
 
     Integer orderID;
     String orderStatus;
+    String fulfilledBy;
 
     public String getOrderStatus() {
         return orderStatus;
@@ -21,6 +22,9 @@ public class OrderResult {
     public void setOrderID(Integer orderID) {
         this.orderID = orderID;
     }
+
+    public String getFulfilledBy() {return fulfilledBy;}
+    public void setFulfilledBy(String fulfilledBy) {this.fulfilledBy = fulfilledBy;}
 
     @Override
     public String toString()

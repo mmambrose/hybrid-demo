@@ -1,8 +1,0 @@
----
-applications:
-- name: fulfillment-service
-  memory: 1GB
-  instances: 1
-  path: ./target/fulfillment-service-0.0.1-SNAPSHOT.jar
-  services:
-    - azure-servicebus

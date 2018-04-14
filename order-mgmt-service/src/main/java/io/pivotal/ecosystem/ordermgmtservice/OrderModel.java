@@ -29,11 +29,14 @@ public class OrderModel implements Serializable {
 
     @Column String orderStatus;
 
+    @Column String fulfilledBy;
+
 //    @Column
 //    @JsonIgnore
 //    private String Status;
 
     public OrderModel(){
+        this.fulfilledBy = "NOT FULFILLED";
         this.orderStatus = "PROCESSING";
     }
 
@@ -66,10 +69,12 @@ public class OrderModel implements Serializable {
 //    public String getStatus(){return Status;}
     public void setStatus(String status){this.orderStatus=status;}
 
+    public void setFulfilledBy(String fulfilledBy){this.fulfilledBy = fulfilledBy;}
+
     @Override
     public String toString()
     {
-        return "OrderModel [orderID=" + orderID + ", productID=" + productID + ", Quantity=" + quantity + ", Shipping Address=" + destinationZipCode + ", Order Status=" + orderStatus + "]";
+        return "OrderModel [orderID=" + orderID + ", productID=" + productID + ", Quantity=" + quantity + ", Shipping Address=" + destinationZipCode + ", Order Status=" + orderStatus + ", Fulfilled By=" + fulfilledBy + "]";
 
     }
 }

@@ -14,6 +14,7 @@ public class OrderModel {
         private String destinationZipCode;
         private Integer orderID;
         private String orderStatus;
+        private String fulfilledBy;
 
         public OrderModel() {
 
@@ -39,6 +40,15 @@ public class OrderModel {
 
         public String getOrderStatus() { return orderStatus; }
         public void setOrderStatus(String orderStatus) { this.orderStatus = orderStatus; }
+
+        public String getFulfilledBy() {
+                return fulfilledBy;
+        }
+
+        public void setFulfilledBy(String fulfilledBy) {
+                this.fulfilledBy = fulfilledBy;
+        }
+
 
         @Override
         public String toString()

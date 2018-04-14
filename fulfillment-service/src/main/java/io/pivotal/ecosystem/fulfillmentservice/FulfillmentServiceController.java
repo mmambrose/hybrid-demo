@@ -85,7 +85,7 @@ public class FulfillmentServiceController  {
 
         private void sendTopicMessage(TopicClient topicClient, FulfillmentResult result) throws JsonProcessingException, ServiceBusException, InterruptedException {
             try {
-                Thread.sleep(25000);
+                Thread.sleep(10000);
                 LOG.info("sleeping");
             } catch (InterruptedException e) {
                 e.printStackTrace();
@@ -115,6 +115,7 @@ public class FulfillmentServiceController  {
                 LOG.info("Determining Cost... Location of this FC is " + location);
                 LOG.info("Destination of this order is " + order.getDestinationZipCode());
                 result.setFulfilled(true);
+                result.setFC(location);
                 LOG.info("Fulfilled is true");
                 return result;
             }
@@ -122,6 +123,7 @@ public class FulfillmentServiceController  {
                 LOG.info("Determining Cost... Location of this FC is " + location);
                 LOG.info("Destination of this order is " + order.getDestinationZipCode());
                 result.setFulfilled(false);
+                result.setFC(location);
                 LOG.info("Fulfilled is false");
                 return result;
             }

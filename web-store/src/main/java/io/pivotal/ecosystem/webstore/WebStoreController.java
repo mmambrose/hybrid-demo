@@ -72,6 +72,7 @@ public class WebStoreController {
         //set orderID and status on OrderModel so that view can access it
         order.setOrderID((orderResult.orderID));
         order.setOrderStatus(orderResult.orderStatus);
+        order.setFulfilledBy(orderResult.fulfilledBy);
 
         //return template
         String template = "status";

@@ -103,6 +103,7 @@ public class OrderQueueService {
                 LOG.info("FC result for this order is " + resultFromFC.getFulfilled());
                 OrderModel updated = orderRepository.findOne(resultFromFC.getOrderID());
                 updated.setStatus("CONFIRMED");
+                updated.setFulfilledBy(resultFromFC.getFC());
                 orderRepository.save(updated);
                 LOG.info("Orders found with findAll(): in DB");
                 LOG.info("-------------------------------");
