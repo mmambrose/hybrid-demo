@@ -66,7 +66,7 @@ public class OrderModel implements Serializable {
     public String getDestinationZipCode(){ return destinationZipCode; }
     public void setDestinationZipCode(String destinationZipCode) { this.destinationZipCode = destinationZipCode; }
 //
-//    public String getStatus(){return Status;}
+    public String getStatus(){return orderStatus;}
     public void setStatus(String status){this.orderStatus=status;}
 
     public void setFulfilledBy(String fulfilledBy){this.fulfilledBy = fulfilledBy;}

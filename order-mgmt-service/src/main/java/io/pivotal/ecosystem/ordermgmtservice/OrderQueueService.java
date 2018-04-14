@@ -113,6 +113,12 @@ public class OrderQueueService {
                 LOG.info("");
             }
             else {
+                OrderModel updated = orderRepository.findOne(resultFromFC.getOrderID());
+                if (updated.getStatus().equals("PROCESSING")){
+                   LOG.info("CANCELLING ORDER");
+                   updated.setStatus("CANCELLED");
+                   orderRepository.save(updated);
+                }
                 LOG.info("FC returned false for order" + resultFromFC.getOrderID());
                 LOG.info("FC result for this order is " + resultFromFC.getFulfilled());
             }
