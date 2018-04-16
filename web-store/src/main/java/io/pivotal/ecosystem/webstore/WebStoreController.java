@@ -35,6 +35,25 @@ public class WebStoreController {
         return template;
     }
 
+    @ModelAttribute("productDescriptions")
+    public String[] getProductDescriptions() {
+        return new String[] {"Blue Tea Pot", "Red Tea Pot", "Pink Tea Pot"};
+    }
+
+//    @ModelAttribute("productDescriptions")
+//    public List<File> getProductDescriptions() {
+//        File folder = new File("/resources/static/images/");
+//        List<File> files = Arrays.asList(folder.listFiles());
+//        return files;
+//    }
+
+
+
+    @ModelAttribute("productQuantities")
+    public Integer[] getProductQuantities() {
+        return new Integer[] {1,2,3,4,5,6,7,8,9,10};
+    }
+
     //process form: receive order creation info
     @RequestMapping(value="/process", method= RequestMethod.POST)
     public String submitForm(@ModelAttribute("order") OrderModel order)
