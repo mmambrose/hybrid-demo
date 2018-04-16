@@ -30,6 +30,7 @@ public class OrderMgmtWebRestController {
     @RequestMapping(value = "/receiveOrder", method = POST)
     public OrderResult receiveOrder(@RequestBody OrderModel order) throws ServiceBusException, InterruptedException {
         LOG.info("OMS received order " + order.toString());
+        order.fulfilledBy = "NOT FULFILLED";
         OrderResult orderResult = new OrderResult();
 
         try {

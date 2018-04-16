@@ -155,6 +155,11 @@ public class FulfillmentServiceController  {
                     LOG.info("in switch statement for " + order.getDestinationZipCode() + " correctFC=" + correctFC);
                     break;
                 }
+                default: {
+                    correctFC = "none";
+                    LOG.info("in switch statement for " + order.getDestinationZipCode() + " correctFC=" + correctFC);
+                    break;
+                }
             }
 
             if (correctFC.equals(location)) {
