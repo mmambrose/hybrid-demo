@@ -15,7 +15,8 @@ public class OrderModel {
         private Integer orderID;
         private String orderStatus;
         private String fulfilledBy;
-        private String productDescription;
+        //private String productDescription;
+        private String productImageURL;
 
         public OrderModel() {
 
@@ -49,8 +50,11 @@ public class OrderModel {
                 this.fulfilledBy = fulfilledBy;
         }
 
-        public String getProductDescription() { return productDescription; }
-        public void setProductDescription(String productDescription) { this.productDescription = productDescription; }
+//        public String getProductDescription() { return productDescription; }
+//        public void setProductDescription(String productDescription) { this.productDescription = productDescription; }
+
+        public String getProductImageURL() { return productImageURL; }
+        public void setProductImageURL(String productImageURL) { this.productImageURL = productImageURL;}
 
 
         @Override
@@ -59,6 +63,4 @@ public class OrderModel {
             return "OrderModel [productID=" + productID + ", Quantity=" + quantity + ", Shipping Address=" + destinationZipCode + "]";
 
         }
-
-
 }

@@ -9,9 +9,38 @@ input[type=text], textarea {
     resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
 }
 
-label {
+.shipping-address label {
     width: 150px;
     display: inline-block;
     text-align: right;
     padding: 1%;
+}
+
+img{
+    height:100px;
+}
+
+.product-images label{
+    float: left;
+    width: 30%;
+}
+
+.product-quantity{
+    display: inline-block;
+}
+.product-images{
+    text-align: center;
+}
+
+/*Embed Radio button inside of product images */
+label > input{ /* HIDE RADIO */
+    visibility: hidden; /* Makes input not-clickable */
+    position: absolute; /* Remove input from document flow */
+}
+label > input + img{ /* IMAGE STYLES */
+    cursor:pointer;
+    border:2px solid transparent;
+}
+label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
+    border:2px solid #f00;
 }

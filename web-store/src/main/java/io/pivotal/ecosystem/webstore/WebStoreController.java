@@ -30,24 +30,33 @@ public class WebStoreController {
     public String showForm(Model model)
     {
         model.addAttribute("order", new OrderModel());
+       // model.addAttribute("products", new ProductModel());
+
         String template = "index";
         LOG.info("returning template " + template);
         return template;
     }
 
-    @ModelAttribute("productDescriptions")
-    public String[] getProductDescriptions() {
-        return new String[] {"Blue Tea Pot", "Red Tea Pot", "Pink Tea Pot"};
+    @ModelAttribute("productIDs")
+    public Integer[] getProductIDs() {
+        return new Integer[] {1,2,3};
     }
 
-//    @ModelAttribute("productDescriptions")
-//    public List<File> getProductDescriptions() {
-//        File folder = new File("/resources/static/images/");
-//        List<File> files = Arrays.asList(folder.listFiles());
-//        return files;
+    @ModelAttribute("productImageURLs")
+    public String[] getProductImageURLs(){
+        return new String[] {"/images/blue-teapot.jpg", "/images/pink-teapot.jpeg", "/images/red-teapot.jpg"};
+    }
+
+    //getProducts load product array
+//    @ModelAttribute("products")
+//    public String getProducts(){
+//        ProductModel product = new ProductModel();
+//        product.setProductDescription("blue tpot");
+//        product.setProductID(1);
+//
+//        LOG.info("TESTING: "+product.toString());
+//        return product.toString();
 //    }
-
-
 
     @ModelAttribute("productQuantities")
     public Integer[] getProductQuantities() {
