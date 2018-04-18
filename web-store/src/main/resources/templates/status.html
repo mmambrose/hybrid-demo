@@ -1,21 +1,22 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>Order Status</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <head>
+        <title>Order Status</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-    <link rel="stylesheet" type="text/css"
-          href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
-</head>
-<body>
-<div class="container">
-    <div class="jumbotron">
-        <h1>Order Status</h1> <span style="font-size:21px;" th:text="'Order #' + ${order.orderID}"></span>
-        <p>Thank you for your order! Your order has been submitted!</p>
-        <p th:text="'Your order ID is: ' + ${order.orderID}" ></p>
-        <p th:text="'Order Status: ' + ${order.orderStatus}" ></p>
-        <p th:text="'Fulfilled By: ' + ${order.fulfilledBy}" ></p>
-    </div>
-</div>
-</body>
+        <link rel="stylesheet" type="text/css"
+              href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
+    </head>
+    <body>
+        <div class="container">
+            <div class="jumbotron">
+                <h1>Order Status</h1> <span style="font-size:21px;" th:text="'Order #' + ${order.orderID}"></span>
+                <p>Thank you for your order! Your order has been submitted!</p>
+                <p th:text="'Your order ID is: ' + ${order.orderID}" ></p>
+                <p th:text="'Order Status: ' + ${order.orderStatus}" ></p>
+                <p th:text="'Fulfilled By: ' + ${order.fulfilledBy}" ></p>
+            </div>
+            <a href="/">Submit another order</a>
+        </div>
+    </body>
 </html>
