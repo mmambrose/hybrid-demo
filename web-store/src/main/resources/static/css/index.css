@@ -1,3 +1,42 @@
+*, *:before, *:after {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #dbf0ef;
+    background-image: -moz-linear-gradient(45deg, #a4dad8 0%, #dbf0ef 50%);
+    background-image: -webkit-linear-gradient(45deg, #a4dad8 0%, #dbf0ef 50%);
+    background-image: -ms-linear-gradient(45deg, #a4dad8 0%, #dbf0ef 50%);
+}
+
+.teapot-depot{
+    font-family: 'Lobster', cursive;
+}
+
+.jumbotron {
+    background-color: #032942;
+    color: #1BAD9E;
+}
+.main {
+    background-color: #fff;
+}
+
+.container{
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.container .jumbotron{
+    border-radius: 0 0 6px 6px;
+}
+
+.form{
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
 input[type=text], textarea {
     width: 40%; /* Full width */
     padding: 12px; /* Some padding */
@@ -14,22 +53,44 @@ input[type=text], textarea {
     display: inline-block;
     text-align: right;
     padding: 1%;
+    display: none;
 }
 
 img{
     height:100px;
 }
+.product-images{
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+}
 
 .product-images label{
     float: left;
-    width: 30%;
+    width: 33%;
+}
+
+.select-product{
+    margin-bottom: 20px;
+}
+
+.select-product p,
+.shipping-address p{
+    font-size: 25px;
 }
 
 .product-quantity{
-    display: inline-block;
+    margin: 2% 0;
+    font-size: 30px;
+    border-bottom: 1px solid #F6DC67;
+    padding-bottom: 20px;
 }
-.product-images{
-    text-align: center;
+
+#select-quantity{
+    background-color: none;
+    border-bottom-width: 2px;
+    border-style: solid;
+    border-color: #1BAD9E;
 }
 
 /*Embed Radio button inside of product images */
@@ -42,5 +103,45 @@ label > input + img{ /* IMAGE STYLES */
     border:2px solid transparent;
 }
 label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
-    border:2px solid #f00;
+    border-bottom:4px solid #1BAD9E;
+    transform: scale(1.2);
+}
+
+select{
+    border: 0;
+    background-color: transparent;
+}
+
+.submit{
+    margin: 3% 0;
+    text-align: center;
+}
+
+.btn-success{
+    background-color: #fff;
+    color: #1BAD9E;
+    border: 2px solid #1BAD9E;
+    border-radius: 0;
+    font-size: 18px;
+}
+
+.btn-success:hover{
+    background-color: #1BAD9E;
+    color: #fff;
+    transform: scale(1.2);
+    font-size: 18px;
+    border-radius: 0;
+    border: 2px solid #1BAD9E;
+}
+
+.btn-success:active{
+    background-color: #1BAD9E;
+    border-radius: 0;
+    border: 2px solid #1BAD9E;
+    border-color: #1BAD9E;
+}
+
+.btn-success:active:focus{
+    background-color: #1BAD9E;
+    border: 2px solid #1BAD9E;
 }

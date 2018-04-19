@@ -3,7 +3,7 @@
 <head>
     <title>CF Summit App</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet" />
     <link rel="stylesheet" type="text/css"
           href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
     <link href="../static/css/normalize.css"
@@ -12,25 +12,16 @@
           th:href="@{css/index.css}" rel="stylesheet" media="screen"/>
 </head>
 <body>
-<div class="container">
+<div class="container main">
     <div class="jumbotron">
-        <h1>Welcome to Teapot Depot!</h1>
-        <p> Scope our catalog!</p>
-        <!--<img src="../images/blue-teapot.jpg"></img>-->
-        <!--<img src="../images/pink-teapot.jpeg"></img>-->
-        <!--<img src="../images/red-teapot.jpg"></img>-->
+        <h1 class="teapot-depot">Teapot Depot</h1>
+        <h2> Welcome! Please scope our catalog!</h2>
+    </div>
 
-        <p> Please select a product</p>
+    <div class="container form">
         <form action="#" th:action="@{/process}"  method="post">
-
-            <!--<label for="select-product">Product:</label>-->
-            <!--<select id="select-product" th:field="*{order.productID}">-->
-                <!--<option th:each="dropdownValue: ${productIDs}"-->
-                        <!--th:value="${dropdownValue}"-->
-                        <!--th:text="${dropdownValue}" ></option>-->
-            <!--</select>-->
-
             <div class="select-product">
+                <p> Select a product</p>
                 <div class="product-images">
                     <label class="product-image" th:each="radioButton: ${productImageURLs}">
                         <input type="radio" name="product" value="small" />
@@ -49,27 +40,28 @@
                 </select>
             </div>
             <div class="shipping-address">
-                <p>Shipping Address:</p>
+                <p>Shipping</p>
                 <label for="street-address">Street Address:</label>
-                <input type="text" id="street-address" class="input-field"/><br/>
+                <input type="text" id="street-address" class="input-field" placeholder="Street Address"/><br/>
 
                 <label for="apt-suite">Apt/Suite:</label>
-                <input type="text" id="apt-suite" class="input-field"/><br/>
+                <input type="text" id="apt-suite" class="input-field" placeholder="Apt/Suite" /><br/>
 
                 <label for="city">City:</label>
-                <input type="text" id="city" class="input-field"/><br/>
+                <input type="text" id="city" class="input-field" placeholder="City" /><br/>
 
                 <label for="state">State:</label>
-                <input type="text" id="state" class="input-field" th:field="*{order.destinationZipCode}"/><br/>
+                <input type="text" id="state" class="input-field" placeholder="State" th:field="*{order.destinationZipCode}"/><br/>
 
                 <label for="zipcode">Zipcode:</label>
-                <input type="text" id="zipcode" class="input-field"/><br/>
+                <input type="text" id="zipcode" class="input-field" placeholder="Zipcode" /><br/>
             </div>
             <div class="submit">
                 <input type="submit" value="Submit" class="btn btn-lg btn-success"/>
             </div>
         </form>
     </div>
+
 </div>
 </body>
 </html>
