@@ -18,9 +18,9 @@ jobs:
 resources:
 - name: git-repo
   type: git
-  paths: /web-store/*
   source:
     uri: {{GIT_REPO}}
+    paths: /web-store/*
     branch: {{GIT_BRANCH}}
     private_key: {{GIT_PRIVATE_KEY}}
 
