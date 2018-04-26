@@ -1,0 +1,13 @@
+git_repo: https://github.com/mambrose-pivotal/hybrid-demo
+git_branch: master
+git_private_key:
+pws_api:
+pws_user:
+pws_pass:
+pws_org:
+pws_space:
+gcp_api:
+gcp_user:
+gcp_pass:
+gcp_org:
+gcp_space:
