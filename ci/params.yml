@@ -1,13 +1,64 @@
 git_repo: https://github.com/mambrose-pivotal/hybrid-demo
 git_branch: master
 git_private_key:
-pws_api:
+  -----BEGIN RSA PRIVATE KEY-----
+  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
+  -----END RSA PRIVATE KEY-----
+pws_api: https://api.run.pivotal.io
 pws_user:
 pws_pass:
-pws_org:
-pws_space:
-gcp_api:
-gcp_user:
-gcp_pass:
-gcp_org:
-gcp_space:
+pws_org: Channel
+pws_space: development
+gcp_api: api.sys.pcf.pivotalcloud.ninja
+gcp_user: maggie
+gcp_pass: cfsummit
+gcp_org: cfsummit
+gcp_space: fulfillment
