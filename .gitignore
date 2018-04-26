@@ -56,6 +56,8 @@ fabric.properties
 
 # User-specific stuff:
 
+ci/params.yml
+
 # Sensitive or high-churn files:
 
 # Gradle:
