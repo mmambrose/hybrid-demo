@@ -1,22 +1,31 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>CF Summit App</title>
+    <title>Confirmation</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet" />
     <link rel="stylesheet" type="text/css"
           href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link href="../static/css/normalize.css" type="text/css"
+          th:href="@{css/normalize.css}" rel="stylesheet" media="screen"/>
+    <link href="../static/css/web-store.css" type="text/css"
+          th:href="@{css/web-store.css}" rel="stylesheet" media="screen"/>
 </head>
+
 <body>
-<div class="container">
+<div class="container main">
     <div class="jumbotron">
-        <h1>Hey there!</h1> <span style="font-size:21px;">Welcome to Teapot Depot</span>
+        <h1 class="teapot-depot">Teapot Depot</h1>
+        <h2> Order Confirmation</h2>
+    </div>
+    <div class="container order-conf">
         <p>Thank you for your order! Your order has been submitted!</p>
-        <p th:text="'Your order ID is:' + ${order.orderID}" ></p>
-        <p>
-            You can track the status of your order <a th:href="@{'/order/' + ${order.orderID} + '/status'}">here</a>
-        </p>
-        <a href="/">Submit another order</a>
+        <p th:text="'Your order ID is: ' + ${order.orderID}" ></p>
+    </div>
+    <div>
+        <div class="order-status-btn">
+                <a th:href="@{'/order/' + ${order.orderID} + '/status'}">Track Your Order Status!</a>
+        </div>
     </div>
 </div>
 </body>

@@ -4,6 +4,11 @@
     box-sizing: border-box;
 }
 
+html, body {
+    margin: 0;
+    height: 100%;
+}
+
 body{
     background-color: #dbf0ef;
     background-image: -moz-linear-gradient(45deg, #a4dad8 0%, #dbf0ef 50%);
@@ -21,6 +26,7 @@ body{
 }
 .main {
     background-color: #fff;
+    padding-bottom: 20%;
 }
 
 .container{
@@ -32,7 +38,9 @@ body{
     border-radius: 0 0 6px 6px;
 }
 
-.form{
+.form,
+.order-conf,
+.status{
     padding-right: 15px;
     padding-left: 15px;
 }
@@ -74,8 +82,7 @@ img{
     margin-bottom: 20px;
 }
 
-.select-product p,
-.shipping-address p{
+p{
     font-size: 25px;
 }
 
@@ -87,7 +94,7 @@ img{
 }
 
 #select-quantity{
-    background-color: none;
+    background-color: transparent;
     border-bottom-width: 2px;
     border-style: solid;
     border-color: #1BAD9E;
@@ -117,7 +124,17 @@ select{
     text-align: center;
 }
 
-.btn-success{
+.order-status-btn{
+    margin: 20px;
+}
+
+.order-status-btn a{
+    padding: 10px 16px;
+    text-decoration: none;
+}
+
+.btn-success,
+.order-status-btn a{
     background-color: #fff;
     color: #1BAD9E;
     border: 2px solid #1BAD9E;
@@ -125,23 +142,31 @@ select{
     font-size: 18px;
 }
 
-.btn-success:hover{
+.btn-success:hover,
+.order-status-btn a:hover{
     background-color: #1BAD9E;
     color: #fff;
-    transform: scale(1.2);
+    transform: scale(1.1);
     font-size: 18px;
     border-radius: 0;
     border: 2px solid #1BAD9E;
 }
 
-.btn-success:active{
+.btn-success:active,
+.order-status-btn a:active{
     background-color: #1BAD9E;
     border-radius: 0;
     border: 2px solid #1BAD9E;
     border-color: #1BAD9E;
 }
 
-.btn-success:active:focus{
+.btn-success:active:focus,
+.order-status-btn a:active:focus{
     background-color: #1BAD9E;
     border: 2px solid #1BAD9E;
+}
+
+.extra p{
+    font-size: 14px;
+    color: #d3d3d3;
 }

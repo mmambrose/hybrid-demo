@@ -47,17 +47,6 @@ public class WebStoreController {
         return new String[] {"/images/blue-teapot.jpg", "/images/pink-teapot.jpeg", "/images/red-teapot.jpg"};
     }
 
-    //getProducts load product array
-//    @ModelAttribute("products")
-//    public String getProducts(){
-//        ProductModel product = new ProductModel();
-//        product.setProductDescription("blue tpot");
-//        product.setProductID(1);
-//
-//        LOG.info("TESTING: "+product.toString());
-//        return product.toString();
-//    }
-
     @ModelAttribute("productQuantities")
     public Integer[] getProductQuantities() {
         return new Integer[] {1,2,3,4,5,6,7,8,9,10};
