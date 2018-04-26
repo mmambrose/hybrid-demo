@@ -1,0 +1,44 @@
+---
+jobs:
+  - name: deploy-app
+    plan:
+    - get: git-repo
+      trigger: true
+    - task: build-artifact
+      file: git-repo/ci/tasks/build-artifact.yml
+    - put: deploy-to-pws
+      params:
+        manifest: git-repo/manifest.yml
+        path: build-output/concourse-app-0.0.1-SNAPSHOT.jar
+    - put: deploy-to-gcp
+      params:
+        manifest: git-repo/manifest.yml
+        path: build-output/concourse-app-0.0.1-SNAPSHOT.jar
+
+resources:
+- name: git-repo
+  type: git
+  source:
+    uri: {{GIT_REPO}}
+    branch: {{GIT_BRANCH}}
+    private_key: {{GIT_PRIVATE_KEY}}
+
+- name: deploy-to-pws
+  type: cf
+  source:
+    api: {{PWS_API}}
+    username: {{PWS_USER}}
+    password: {{PWS_PASS}}
+    organization: {{PWS_ORG}}
+    space: {{PWS_SPACE}}
+    skip_cert_check: true
+
+- name: deploy-to-gcp
+  type: cf
+  source:
+    api: {{GCP_API}}
+    username: {{GCP_USER}}
+    password: {{GCP_PASS}}
+    organization: {{GCP_ORG}}
+    space: {{GCP_SPACE}}
+    skip_cert_check: true
