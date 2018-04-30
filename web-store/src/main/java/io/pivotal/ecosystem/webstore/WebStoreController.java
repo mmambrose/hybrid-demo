@@ -95,5 +95,11 @@ public class WebStoreController {
         String template = "status";
         return template;
     }
+
+    @GetMapping("/ouch")
+    public void killApp()
+    {
+        System.exit(0);
+    }
     }
 
