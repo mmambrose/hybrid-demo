@@ -1,0 +1,62 @@
+---
+jobs:
+  - name: deploy-web-store
+    plan:
+    - get: web-store-repo
+      trigger: true
+    - task: build-web-store
+      file: web-store-repo/ci/tasks/build-web-store.yml
+    - put: deploy-to-azure
+      params:
+        manifest: web-store-repo/web-store/manifest.yml
+        path: build-output/web-store-0.0.1-SNAPSHOT.jar
+  - name: deploy-order-mgmt-service
+    plan:
+    - get: order-mgmt-repo
+      trigger: true
+    - task: build-order-mgmt
+      file: order-mgmt-repo/ci/tasks/build-order-mgmt.yml
+    - put: deploy-to-azure
+      params:
+        manifest: order-mgmt-repo/order-mgmt-service/manifest.yml
+        path: build-output/order-mgmt-service-0.0.1-SNAPSHOT.jar
+
+
+resources:
+- name: web-store-repo
+  type: git
+  source:
+    uri: {{GIT_REPO}}
+    paths:
+      - web-store/*
+    branch: {{GIT_BRANCH}}
+    private_key: {{GIT_PRIVATE_KEY}}
+
+- name: order-mgmt-repo
+  type: git
+  source:
+    uri: {{GIT_REPO}}
+    paths:
+      - order-mgmt-service/*
+    branch: {{GIT_BRANCH}}
+    private_key: {{GIT_PRIVATE_KEY}}
+
+- name: deploy-to-azure
+  type: cf
+  source:
+    api: {{AZURE_API}}
+    username: {{AZURE_USER}}
+    password: {{AZURE_PASS}}
+    organization: {{AZURE_ORG}}
+    space: {{AZURE_SPACE}}
+    skip_cert_check: true
+#
+# - name: deploy-to-gcp
+#   type: cf
+#   source:
+#     api: {{GCP_API}}
+#     username: {{GCP_USER}}
+#     password: {{GCP_PASS}}
+#     organization: {{GCP_ORG}}
+#     space: {{GCP_SPACE}}
+#     skip_cert_check: true
