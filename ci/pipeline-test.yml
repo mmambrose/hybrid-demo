@@ -74,23 +74,22 @@ resources:
     space: {{AZURE_SPACE}}
     skip_cert_check: true
 
- - name: deploy-to-gcp
-   type: cf
-   source:
-     api: {{GCP_API}}
-     username: {{GCP_USER}}
-     password: {{GCP_PASS}}
-     organization: {{GCP_ORG}}
-     space: {{GCP_SPACE}}
-     skip_cert_check: true
+- name: deploy-to-gcp
+  type: cf
+  source:
+    api: {{GCP_API}}
+    username: {{GCP_USER}}
+    password: {{GCP_PASS}}
+    organization: {{GCP_ORG}}
+    space: {{GCP_SPACE}}
+    skip_cert_check: true
 
-
- - name: deploy-to-pws
-   type: cf
-   source:
-     api: {{PWS_API}}
-     username: {{PWS_USER}}
-     password: {{PWS_PASS}}
-     organization: {{PWS_ORG}}
-     space: {{PWS_SPACE}}
-     skip_cert_check: true
+- name: deploy-to-pws
+  type: cf
+  source:
+    api: {{PWS_API}}
+    username: {{PWS_USER}}
+    password: {{PWS_PASS}}
+    organization: {{PWS_ORG}}
+    space: {{PWS_SPACE}}
+    skip_cert_check: true
