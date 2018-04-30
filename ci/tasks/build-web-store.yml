@@ -15,4 +15,4 @@ outputs:
   - name: build-output
 
 run:
-  path: web-store-repo/ci/tasks/build-artifact.sh
+  path: web-store-repo/ci/tasks/build-web-store.sh
