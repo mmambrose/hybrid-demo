@@ -25,7 +25,7 @@ jobs:
     - get: fulfillment-service-repo
       trigger: true
     - task: build-fulfillment-service
-      file: fulfillment-service-repo/ci/tasks/build-order-mgmt.yml
+      file: fulfillment-service-repo/ci/tasks/fulfillment-service/build-fulfillment-service.yml
     - put: deploy-to-pws
       params:
         manifest: fulfillment-service-repo/fulfillment-service/manifest-south.yml
