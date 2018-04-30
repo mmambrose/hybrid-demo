@@ -9,10 +9,10 @@ image_resource:
 
 
 inputs:
-  - name: web-store-repo
+  - name: fulfillment-service-repo
 
 outputs:
   - name: build-output
 
 run:
-  path: web-store-repo/ci/tasks/web-store/build-web-store.sh
+  path: fulfillment-service-repo/ci/tasks/fulfillment-service/build-fulfillment-service.sh

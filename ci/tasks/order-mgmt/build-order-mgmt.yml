@@ -15,4 +15,4 @@ outputs:
   - name: build-output
 
 run:
-  path: order-mgmt-repo/ci/tasks/build-order-mgmt.sh
+  path: order-mgmt-repo/ci/tasks/order-mgmt/build-order-mgmt.sh
