@@ -1,3 +1,0 @@
-#!/bin/bash
-
-cf login -a api.run.pivotal.io --skip-ssl-validation -u mambrose@pivotal.io
