@@ -1,3 +1,0 @@
-#!/bin/bash
-
-cf login -a api.system.mpivcf.com --skip-ssl-validation -u maggie -p cfsummit
